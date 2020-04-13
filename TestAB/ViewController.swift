@@ -10,16 +10,40 @@ import UIKit
 import FirebaseAnalytics
 
 class ViewController: UIViewController {
+    @IBOutlet weak var testButton: UIButton!
+    @IBOutlet weak var testLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "FirstViewController"
-        // Do any additional setup after loading the view.
+        
+        setupButtonAndLabel()
+    }
+    
+    func setupButtonAndLabel() {
+        if let buttonText = AppDelegate.remoteConfig["texto_botao"].stringValue {
+            DispatchQueue.main.async {
+                self.testButton.setTitle(buttonText, for: .normal)
+            }
+        }
+        
+        if let labelText = AppDelegate.remoteConfig["texto_label"].stringValue {
+            DispatchQueue.main.async {
+                self.testLabel.text = labelText
+            }
+        }
+    }
+    
+    @IBAction func fetch(_ sender: Any) {
+        Analytics.logEvent("fetchButton", parameters: ["fetchButton": "tapped"])
+        AppDelegate().fetchRemoteConfig(finished: {
+            self.setupButtonAndLabel()
+        })
     }
     
     @IBAction func tapped(_ sender: Any) {
-        Analytics.logEvent("button", parameters: ["button": "tapped"])
+        Analytics.logEvent("testButton", parameters: ["testButton": "tapped"])
     }
     
 }

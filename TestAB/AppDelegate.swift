@@ -8,15 +8,21 @@
 
 import UIKit
 import Firebase
+import FirebaseRemoteConfig
 
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
+    
+    static var remoteConfig = RemoteConfig.remoteConfig()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        
+        setupRemoteConfigDefaultValues()
+        setupRemoteConfig()
+        
         return true
     }
 
@@ -34,6 +40,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
-
+    func setupRemoteConfig() {
+        let settings = RemoteConfigSettings(developerModeEnabled: true)
+        settings.minimumFetchInterval = 0
+        AppDelegate.remoteConfig.configSettings = settings
+        fetchRemoteConfig()
+    }
+    
+    func fetchRemoteConfig(finished: (() -> Void)? = nil) {
+        AppDelegate.remoteConfig.fetch(withExpirationDuration: 0, completionHandler: { (status, error) in
+            if status == .success {
+                AppDelegate.remoteConfig.activate(completionHandler: { error in
+                    finished?()
+                })
+            } else {
+                print(error)
+                finished?()
+            }
+        })
+    }
+    
+    func setupRemoteConfigDefaultValues() {
+        let defaultValues = [
+            "teste_remoteconfig": "didn't download" as NSObject
+        ]
+        
+        AppDelegate.remoteConfig.setDefaults(defaultValues)
+    }
 }
 

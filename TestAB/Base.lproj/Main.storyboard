@@ -38,7 +38,7 @@
                                     <constraint firstAttribute="height" constant="50" id="xmX-YU-59c"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Go To SecondViewController">
+                                <state key="normal" title="none">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -56,20 +56,34 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sg6-fx-eJR">
+                                <rect key="frame" x="40" y="702" width="334" height="30"/>
+                                <state key="normal" title="Fetch RemoteConfig"/>
+                                <connections>
+                                    <action selector="fetch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="621-b0-6bq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="pqZ-kK-rRK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="0Ug-sD-QjI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pqZ-kK-rRK" secondAttribute="trailing" constant="30" id="7Ig-ui-lXi"/>
+                            <constraint firstItem="p7m-Yv-934" firstAttribute="top" secondItem="Sg6-fx-eJR" secondAttribute="bottom" constant="20" id="Gzc-oL-W3q"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="p7m-Yv-934" secondAttribute="bottom" constant="60" id="KTi-ha-Jft"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="p7m-Yv-934" secondAttribute="trailing" constant="40" id="O5y-SD-wKE"/>
+                            <constraint firstItem="Sg6-fx-eJR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="RY8-Re-EyO"/>
                             <constraint firstItem="pqZ-kK-rRK" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="UPv-eN-yTg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Sg6-fx-eJR" secondAttribute="trailing" constant="40" id="kCt-Ue-VYQ"/>
                             <constraint firstItem="p7m-Yv-934" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="keS-SC-epP"/>
                             <constraint firstItem="pqZ-kK-rRK" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="xoE-6L-ge4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="ns8-YX-Xy5"/>
+                    <connections>
+                        <outlet property="testButton" destination="p7m-Yv-934" id="tQq-gk-Rfk"/>
+                        <outlet property="testLabel" destination="pqZ-kK-rRK" id="cuo-0R-5Px"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
