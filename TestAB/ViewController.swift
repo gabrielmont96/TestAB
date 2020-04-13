@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 class ViewController: UIViewController {
 
@@ -16,4 +17,9 @@ class ViewController: UIViewController {
         title = "FirstViewController"
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func tapped(_ sender: Any) {
+        Analytics.logEvent("button", parameters: ["button": "tapped"])
+    }
+    
 }
