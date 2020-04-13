@@ -7,6 +7,7 @@ target 'TestAB' do
   
   pod 'Firebase/Core'
   pod 'Firebase/RemoteConfig'
+  pod 'Firebase/Analytics'
 
   # Pods for TestAB
 
