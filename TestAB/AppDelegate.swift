@@ -54,7 +54,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     finished?()
                 })
             } else {
-                print(error)
                 finished?()
             }
         })
@@ -62,7 +61,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func setupRemoteConfigDefaultValues() {
         let defaultValues = [
-            "teste_remoteconfig": "didn't download" as NSObject
+            "texto_label": "Fetcher error" as NSObject,
+            "texto_botao": "Fetcher error" as NSObject
         ]
         
         AppDelegate.remoteConfig.setDefaults(defaultValues)
